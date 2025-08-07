@@ -1,21 +1,23 @@
 import ProductCard from '../components/ProductCard/ProductCard';
-import styles from '../app/page.module.css'; // Certo
+import styles from '../app/page.module.css';
+import produtos from '../data/products';
 import './globals.css';
 
 export default function Page() {
   return (
-    <main className={styles.main}> 
+    <main className={styles.main}>
       <h1 className={styles.title}>Produtos🔥</h1>
-      <ProductCard 
-        image="/image/iphone13.jpeg"
-        name="IPHONE 13"
-        price="3.499,99"
-      />
-      <ProductCard 
-        image="/image/iphone15.jpeg"
-        name="IPHONE 15"
-        price="4.899,99"
-      />
+      <div>
+        {produtos.map((produto) => (
+          <ProductCard
+            key={produto.id}
+            name={produto.name}
+            description={produto.description}
+            image={produto.image}
+            price={produto.price}
+            />
+      ))}
+      </div>
     </main>
   );
 }
